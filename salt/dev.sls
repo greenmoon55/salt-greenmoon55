@@ -65,10 +65,11 @@ ipython:
     - user: cloud
     - group: cloud
 
-#vim +PluginInstall +qall:
-#  cmd.run:
-#    - require:
-#      - cmd: cp /home/cloud/dotfiles/.vimrc /home/cloud
-#      - cmd: git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-#    - user: cloud
-#    - group: cloud
+tmux-ppa:
+  pkgrepo.managed:
+    - ppa: pi-rho/dev
+    - require_in:
+      - pkg: tmux
+
+tmux:
+  pkg.installed
