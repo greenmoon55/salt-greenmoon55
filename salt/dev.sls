@@ -7,12 +7,27 @@ git:
 nethogs:
   pkg.installed
 
-salt://scripts/get-pip.py:
-  cmd.script
+install pip:
+  cmd.script:
+    - name: salt://scripts/get-pip.py
+
+/home/cloud/.pip/pip.conf:
+  file.managed:
+    - source: salt://files/pip.conf
+    - makedirs: True
+    - user: cloud
+    - group: cloud
+    - require:
+      - cmd: install pip
+
+virtualenv:
+  pip.installed
+
+virtualenvwrapper:
+  pip.installed
 
 flake8:
-  pip.installed:
-    - name: flake8
+  pip.installed
 
 ipython:
   pkg.installed
