@@ -17,42 +17,6 @@ flake8:
 ipython:
   pkg.installed
 
-#https://github.com/greenmoon55/dotfiles.git:
-#  git.latest:
-#    - target: /home/cloud/dotfiles
-
-#/home/cloud/dotfiles:
-#  file.directory:
-#    - user: cloud
-#    - group: cloud
-#    - recurse:
-#      - user
-#      - group 
-#    - require:
-#      - git: https://github.com/greenmoon55/dotfiles.git
-
-#cp /home/cloud/dotfiles/.vimrc /home/cloud:
-#  cmd.run:
-#    - require:
-#      - file: /home/cloud/dotfiles
-#    - user: cloud
-#    - group: cloud
-      
-#/home/cloud/:
-#  file.directory:
-#    - user: cloud
-#    - group: cloud
-#    - recurse:
-#      - user
-#      - group 
-#    - require:
-#      - cmd: cp /home/cloud/dotfiles/.* /home/cloud
-
-#git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim:
-#  cmd.run:
-#    - user: cloud
-#    - group: cloud
-
 /home/cloud/.vimrc:
   file.managed:
     - source: salt://files/.vimrc
@@ -73,3 +37,11 @@ tmux-ppa:
 
 tmux:
   pkg.installed
+
+/home/cloud/.tmux.conf:
+  file.managed:
+    - source: salt://files/.tmux.conf
+    - user: cloud
+    - group: cloud
+    - require:
+      - pkg: tmux
