@@ -29,6 +29,9 @@ virtualenvwrapper:
 flake8:
   pip.installed
 
+git-review:
+  pip.installed
+
 ipython:
   pkg.installed
 
