@@ -20,6 +20,10 @@ install pip:
     - require:
       - cmd: install pip
 
+setuptools:
+  pip.installed:
+    - upgrade: True
+
 virtualenv:
   pip.installed
 
