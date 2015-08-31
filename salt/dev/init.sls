@@ -1,3 +1,6 @@
+include:
+  - .virtualenv
+
 vim:
   pkg.installed
 
@@ -23,12 +26,6 @@ install pip:
 setuptools:
   pip.installed:
     - upgrade: True
-
-virtualenv:
-  pip.installed
-
-virtualenvwrapper:
-  pip.installed
 
 flake8:
   pip.installed
