@@ -34,7 +34,7 @@ git-review:
   pip.installed
 
 ipython:
-  pkg.installed
+  pip.installed
 
 /home/cloud/.vimrc:
   file.managed:
