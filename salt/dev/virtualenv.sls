@@ -1,14 +1,22 @@
 virtualenv:
-  pip.installed
+  pip.installed:
+    - require:
+      - sls: dev.pip
 
 virtualenvwrapper:
-  pip.installed
+  pip.installed:
+    - require:
+      - sls: dev.pip
 
 /home/cloud/Envs:
-  file.exists
+  file.directory:
+    - user: cloud
+    - group: cloud
 
 /home/cloud/.bashrc:
   file.append:
     - text:
       - export WORKON_HOME=~/Envs
       - source /usr/local/bin/virtualenvwrapper.sh
+    - require:
+      - pip: virtualenvwrapper
